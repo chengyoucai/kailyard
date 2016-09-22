@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
+	default-lazy-init="true">
+
+	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/TEMPLATE" />
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter">
+			<bean
+					class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="database" value="MYSQL" />
+				<property name="showSql" value="true" />
+				<!-- <property name="generateDdl" value="true" /> -->
+			</bean>
+		</property>
+		<property name="packagesToScan" value="net.kailyard"/>
+		<property name="jpaProperties">
+			<props>
+<!--				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>-->
+                <prop key="hibernate.implicit_naming_strategy">legacy-jpa</prop>
+                <prop key="hibernate.physical_naming_strategy">net.kailyard.common.persistence.ImprovedNamingStrategy</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+    <bean id="auditingProvider" class="net.kailyard.common.persistence.UserIdAuditorAware"/>
+    <bean id="dateTimeProvider" class="net.kailyard.common.persistence.AuditingDateTimeProvider" />
+
+	<jpa:auditing auditor-aware-ref="auditingProvider" set-dates="true"/>
+
+	<jpa:repositories base-package="net.kailyard"
+		transaction-manager-ref="transactionManager"
+		entity-manager-factory-ref="entityManagerFactory" />
+
+    <!-- mybaitis的定义 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <property name="typeAliasesPackage" value="net.kailyard.**.entity" />
+		<property name="mapperLocations" value="classpath*:net/kailyard/**/repository/*.xml" />
+	</bean>
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="net.kailyard.**.repository" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+		<property name="annotationClass" value="net.kailyard.common.persistence.MybatisRepository" />
+	</bean>
+
+</beans>

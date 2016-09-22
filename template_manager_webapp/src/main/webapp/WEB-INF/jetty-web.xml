@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+<New id="edataDataSource" class="org.eclipse.jetty.plus.jndi.Resource">
+    <Arg></Arg>
+    <Arg>jdbc/TEMPLATE</Arg>
+    <Arg>
+        <New class="com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource">
+            <Set name="url">jdbc:mysql://localhost:3306/kailyard?useUnicode=true&amp;zeroDateTimeBehavior=convertToNull&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8&amp;autoReconnect=true</Set>
+            <Set name="user">template</Set>
+            <Set name="password">template</Set>
+        </New>
+    </Arg>
+</New>
+</Configure>

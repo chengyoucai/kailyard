@@ -1,0 +1,13 @@
+<configuration scan="true" scanPeriod="60 seconds">
+    <jmxConfigurator />
+    <contextName>manager</contextName>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <logger name="net.kailyard" additivity="false" level="debug">
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <root level="warn">
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>

@@ -1,0 +1,69 @@
+html, body {
+    font: 13px/1.5 tahoma, arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+ul, li {
+    list-style: none;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.menu-ul {
+    margin: 0;
+    padding: 0;
+}
+
+.menu-ul .module{
+    clear: both;
+    display: block;
+    line-height: 22px;
+    cursor: pointer;
+    padding: 2px 0px 2px 13px;
+}
+
+.module .icon-menu{
+    background: url(../images/menu.png) no-repeat left center;
+}
+
+.module .text-menu {
+    padding-left: 18px;
+}
+
+.menu-hover {
+    background:#f5f5f5;
+}
+
+.menu-selected {
+    background:#e8edf3;
+}
+
+#header .nav {
+    margin: 0;
+    padding: 0;
+    display: block; position: absolute; right: 12px; top: 4px; color: #b9ccda;
+}
+
+#header .nav a {
+    color: #b9ccda;
+}
+#header .nav a:hover{text-decoration: underline}
+
+#header .nav li {
+    float: left;
+    margin-left: -1px;
+    padding: 0 8px;
+    line-height: 11px;
+    background: url(../images/listLine.png) no-repeat;
+}
+
+#header .themeList {
+    color: #b9ccda;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
