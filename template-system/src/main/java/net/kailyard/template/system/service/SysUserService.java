@@ -5,16 +5,17 @@ import com.google.common.collect.Lists;
 import net.kailyard.template.common.domain.Tree;
 import net.kailyard.template.common.exception.ApplicationRuntimeException;
 import net.kailyard.template.common.persistence.DynamicSpecifications;
+import net.kailyard.template.common.security.SecurityUtil;
 import net.kailyard.template.common.service.BaseService;
-import net.kailyard.template.system.repository.SysUserRoleDao;
-import net.kailyard.template.utils.Constants;
-import net.kailyard.template.utils.PageUtil;
 import net.kailyard.template.system.entity.Role;
 import net.kailyard.template.system.entity.SysUser;
 import net.kailyard.template.system.entity.SysUserRoleRel;
 import net.kailyard.template.system.repository.RoleDao;
 import net.kailyard.template.system.repository.SysUserDao;
+import net.kailyard.template.system.repository.SysUserRoleDao;
 import net.kailyard.template.system.utils.SysUserUtils;
+import net.kailyard.template.utils.Constants;
+import net.kailyard.template.utils.PageUtil;
 import net.kailyard.template.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,6 +23,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -176,9 +178,7 @@ public class SysUserService extends BaseService<SysUser, Long> {
 
         String[] roleIds = ids.split(Constants.SEP_COMMA);
         for (String roleId : roleIds) {
-            SysUserRoleRel sysUserRoleRel = new SysUserRoleRel();
-            sysUserRoleRel.setUserId(userId);
-            sysUserRoleRel.setRoleId(Long.parseLong(roleId));
+            SysUserRoleRel sysUserRoleRel = new SysUserRoleRel(userId, Long.parseLong(roleId), SecurityUtil.getCurrentUserId(), new Date());
             sysUserRoleDao.save(sysUserRoleRel);
         }
     }
