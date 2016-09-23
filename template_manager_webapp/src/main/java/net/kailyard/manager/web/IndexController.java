@@ -24,16 +24,9 @@ public class IndexController {
 
     @RequestMapping("/test")
     public String test(Model model) {
-        model.addAttribute("menuList", authorityService.getMenuTree());
+        model.addAttribute("aaaa", "aaa");
         return "test";
     }
-
-    //    @RequestMapping("/menus")
-//    public String menus(Model model) {
-//        model.addAttribute("menuList", authorityService.getMenuTree());
-//
-//        return "menu";
-//    }
 
     @RequestMapping(value = "/currentUser", method = RequestMethod.GET)
     public String north(Model model) {

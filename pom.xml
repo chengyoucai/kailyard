@@ -91,6 +91,7 @@
 
     <modules>
         <module>template_core</module>
+        <module>template_system</module>
         <module>template_api</module>
         <module>template_manager_webapp</module>
     </modules>
