@@ -13,7 +13,7 @@ public class Permission extends BaseEntity {
     private static final long serialVersionUID = -995095702338875759L;
 
     private String name;
-	private String permission;
+	private String permissions;
     private String description;
     private Long menuId;
     private String menuName;
@@ -54,12 +54,12 @@ public class Permission extends BaseEntity {
         this.name = name;
     }
 
-    public String getPermission() {
-        return permission;
+    public String getPermissions() {
+        return permissions;
     }
 
-    public void setPermission(String permission) {
-        this.permission = permission;
+    public void setPermissions(String permissions) {
+        this.permissions = permissions;
     }
 
     public String getDescription() {
@@ -73,6 +73,6 @@ public class Permission extends BaseEntity {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this).omitNullValues().add("id", getId()).add("name", getName())
-                .add("permission", getPermission()).toString();
+                .add("permissions", getPermissions()).toString();
     }
 }

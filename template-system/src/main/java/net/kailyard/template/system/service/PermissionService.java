@@ -69,7 +69,7 @@ public class PermissionService extends BaseService<Permission, Long> {
      * @param permission
      */
     public void add(Permission permission) {
-        if (null != permissionDao.findByPermission(permission.getPermission())) {
+        if (null != permissionDao.findByPermissions(permission.getPermissions())) {
             throw new ApplicationRuntimeException("权限已存在!");
         }
 
@@ -81,7 +81,7 @@ public class PermissionService extends BaseService<Permission, Long> {
      * @param permission
      */
     public void modify(Permission permission) {
-        Permission permissionDB = permissionDao.findByPermission(permission.getPermission());
+        Permission permissionDB = permissionDao.findByPermissions(permission.getPermissions());
         if (null != permissionDB && !permissionDB.getId().equals(permission.getId())) {
             throw new ApplicationRuntimeException("权限已存在!");
         }

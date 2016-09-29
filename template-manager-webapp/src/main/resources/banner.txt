@@ -1,0 +1,7 @@
+ _  __     _ _                     _
+| |/ /__ _(_) |_   _  __ _ _ __ __| |
+| ' // _` | | | | | |/ _` | '__/ _` |
+| . \ (_| | | | |_| | (_| | | | (_| |
+|_|\_\__,_|_|_|\__, |\__,_|_|  \__,_|
+               |___/
+:: ${AnsiColor.GREEN}Kailyard manager (v0.1) ${AnsiColor.BRIGHT_WHITE} @Spring Boot ${spring-boot.formatted-version} ::

@@ -14,7 +14,7 @@ public interface RolePermissionDao extends BaseRepository<RolePermissionRel, Lon
     List<RolePermissionRel> findByRoleIds(List<Long> ids);
 
     @Transactional(readOnly = true)
-    @Query(value="select distinct b.permission from ss_role_permission_rel a, ss_permission b where b.id = a.permission_id and a.role_id in (?1)" ,nativeQuery=true)
+    @Query(value="select distinct b.permissions from ss_role_permission_rel a, ss_permission b where b.id = a.permission_id and a.role_id in (?1)" ,nativeQuery=true)
     List<String> findPermissionsByRoleIds(List<Long> ids);
 
     @Modifying

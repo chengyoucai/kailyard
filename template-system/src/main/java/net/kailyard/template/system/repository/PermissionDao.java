@@ -10,5 +10,5 @@ public interface PermissionDao extends BaseRepository<Permission, Long> {
     @Transactional(readOnly = true)
     List<Permission> findByMenuId(Long id);
 
-    Permission findByPermission(String permission);
+    Permission findByPermissions(String permission);
 }

@@ -96,13 +96,13 @@ public class PermissionController {
             }
 
             if(permission.getId()!=null){
-                if(Strings.isNullOrEmpty(permission.getPermission())){
+                if(Strings.isNullOrEmpty(permission.getPermissions())){
                     LOGGER.warn("update permission occur exception.permission[{}]", permission);
                     result.setFailure("参数错误");
                 }
                 permissionService.modify(permission);
             } else {
-                if(Strings.isNullOrEmpty(permission.getName())||Strings.isNullOrEmpty(permission.getPermission())){
+                if(Strings.isNullOrEmpty(permission.getName())||Strings.isNullOrEmpty(permission.getPermissions())){
                     LOGGER.warn("add permission occur exception.SysUser[{}]", permission);
                     result.setFailure("参数错误");
                 }

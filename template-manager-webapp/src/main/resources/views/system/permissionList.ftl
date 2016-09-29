@@ -17,7 +17,7 @@
                     width : 50
                 },
                 {
-                    field : 'permission',
+                    field : 'permissions',
                     title : '权限',
                     width : 50
                 },
@@ -194,7 +194,7 @@
                                 "
                         />
                         <label class="ui-label">权限名称：</label> <input type="text" name="search_LIKE_name" data-options="validType:['length[0,30]'],validateOnCreate:false" class="easyui-textbox" size="15"/>
-                        <label class="ui-label">权限：</label> <input type="text" name="search_LIKE_permission" data-options="validType:['length[0,30]'],validateOnCreate:false" class="easyui-textbox"  size="15"/>
+                        <label class="ui-label">权限：</label> <input type="text" name="search_LIKE_permissions" data-options="validType:['length[0,30]'],validateOnCreate:false" class="easyui-textbox"  size="15"/>
                         <a href="javascript:searchPermission();" class="easyui-linkbutton" iconCls="icon-search">查询</a>
                         <a href="javascript:cancelSearchPermission();" class="easyui-linkbutton" iconCls="icon-cancel">重置</a>
                     </form>
@@ -221,7 +221,7 @@
             </tr>
             <tr>
                 <td style="height: 30px;" align="right">权限：</td>
-                <td><input name="permission" type="text" class="easyui-textbox" style="height: 25px"
+                <td><input name="permissions" type="text" class="easyui-textbox" style="height: 25px"
                            data-options="required:true,validType:['isNotNull','length[1,32]']" size="30" /></td>
             </tr>
             <tr>
