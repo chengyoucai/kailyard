@@ -24,8 +24,16 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!--<executable>true</executable>-->
+                    <outputDirectory>../release/${buildNumber}</outputDirectory>
+                </configuration>
+            </plugin>
         </plugins>
-        <finalName>manager</finalName>
+        <finalName>liqi-manager</finalName>
     </build>
 
     <dependencies>

@@ -16,6 +16,8 @@
     <properties>
         <java.version>1.7</java.version>
         <project.version>0.0.1-SNAPSHOT</project.version>
+        <maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
+        <buildNumber>${maven.build.timestamp}</buildNumber>
     </properties>
 
     <dependencyManagement>
